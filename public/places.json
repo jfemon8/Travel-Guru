@@ -1,0 +1,26 @@
+[
+  {
+    "id": "coxs-bazar",
+    "name": "Cox's Bazar",
+    "description": "Cox's Bazar is a popular tourist destination in southeastern Bangladesh, renowned for its 120 km long sandy beach — the longest uninterrupted natural sea beach in the world. The town also features marine drive roads, seafood, and vibrant beach life that attracts tourists all year round.",
+    "image": "https://i.ibb.co/hFvFw8mh/Rectangle-1.png"
+  },
+  {
+    "id": "sreemangal",
+    "name": "Sreemangal",
+    "description": "Sreemangal, located in the northeastern part of Bangladesh, is celebrated for its endless tea gardens, tranquil nature, and rich biodiversity. Visitors can explore Lawachara National Park, observe rare wildlife, and enjoy a peaceful retreat surrounded by green hills and rainforests.",
+    "image": "https://i.ibb.co/Txc8swbQ/Sreemongol.png"
+  },
+  {
+    "id": "sundarbans",
+    "name": "Sundarbans",
+    "description": "The Sundarbans, a UNESCO World Heritage Site, is the largest mangrove forest in the world, spreading across southern Bangladesh. It is home to a unique ecosystem and rare species including the majestic Royal Bengal Tiger, estuarine crocodiles, and spotted deer. It offers a thrilling experience for eco-tourists and nature lovers.",
+    "image": "https://i.ibb.co/Q7dhtLNX/sundorbon.png"
+  },
+  {
+    "id": "sajek",
+    "name": "Sajek",
+    "description": "Sajek Valley is a hill destination located in the Rangamati District of Bangladesh. Often referred to as the 'Queen of Hills', it is famous for its cloud-covered mountains, tribal lifestyle, and scenic views of sunrise and sunset. It's one of the most peaceful and picturesque places to explore.",
+    "image": "https://i.ibb.co/8nqb1TLP/Sajek.png"
+  }
+]

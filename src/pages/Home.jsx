@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import bgImg from "../assets/images/Rectangle_28.png";
+import { Outlet } from "react-router";
+import Main from "../components/Main/Main";
 
 const Home = () => {
   return (
@@ -10,6 +12,7 @@ const Home = () => {
     >
       <div>
         <Navbar></Navbar>
+        <Main />
       </div>
     </div>
   );

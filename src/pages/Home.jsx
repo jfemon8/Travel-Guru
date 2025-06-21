@@ -7,7 +7,7 @@ import Main from "../components/Main/Main";
 const Home = () => {
   return (
     <div
-      className="bg-cover bg-center h-screen"
+      className="bg-cover bg-center h-full"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div>

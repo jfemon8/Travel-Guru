@@ -2,15 +2,28 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router";
 
-const Main = () => {
+const Main = ({ searchString }) => {
   const [places, setPlaces] = useState([]);
   const [placeIndex, setPlaceIndex] = useState(0);
+  const [allPlaces, setAllPlaces] = useState([]);
 
   useEffect(() => {
     fetch("places.json")
       .then((res) => res.json())
-      .then((data) => setPlaces(data));
+      .then((data) => {
+        setPlaces(data);
+        setAllPlaces(data);
+      });
   }, []);
+
+  useEffect(() => {
+    setPlaces(
+      allPlaces.filter((place) =>
+        place.name.toLowerCase().includes(searchString.toLowerCase())
+      )
+    );
+    setPlaceIndex(0);
+  }, [searchString, allPlaces]);
 
   const handleCardClick = (index) => {
     setPlaceIndex(index);
@@ -30,9 +43,9 @@ const Main = () => {
     <div className="pl-4 py-4 xl:pl-32 grid grid-cols-1 xl:grid-cols-3 gap-4">
       <div className="p-1">
         <h1 className="bebas text-2xl xl:text-8xl">
-          {places[placeIndex].name}
+          {places[placeIndex]?.name}
         </h1>
-        <p className="mb-6">{places[placeIndex].description}</p>
+        <p className="mb-6">{places[placeIndex]?.description}</p>
         <Link
           to={"/booking"}
           className="px-7 py-3 rounded border border-[#F9A51A] bg-[#F9A51A] font-medium text-black flex gap-2 items-center w-fit hover:bg-black hover:text-[#F9A51A]"
@@ -43,7 +56,7 @@ const Main = () => {
       <div className="pl-1 py-1 xl:col-span-2">
         <div
           ref={carouselRef}
-          className="carousel carousel-center bg-transparent rounded-box w-full space-x-4 py-4"
+          className="carousel carousel-center bg-transparent rounded-box w-full space-x-4"
         >
           {places.map((place, index) => (
             <div

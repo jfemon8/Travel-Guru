@@ -4,7 +4,7 @@ import logo from "../../assets/logo-white.png";
 import { Link, NavLink } from "react-router";
 import { FaSearch } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ setSearchString }) => {
   const [menuClicked, setMenuClicked] = useState(false);
 
   const handleNavMenuClicked = () => {
@@ -79,6 +79,7 @@ const Navbar = () => {
           type="text"
           placeholder="Search your Destination..."
           className="bg-transparent outline-none w-full placeholder-white"
+          onChange={(e) => setSearchString(e.target.value)}
         />
       </div>
       <div className="hidden xl:block">

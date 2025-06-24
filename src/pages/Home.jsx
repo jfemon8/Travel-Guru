@@ -8,11 +8,13 @@ const Home = () => {
 
   return (
     <div
-      className="bg-cover bg-center h-full"
+      className="bg-cover bg-center h-full relative min-h-dvh"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      <div>
-        <Navbar setSearchString={setSearchString}></Navbar>
+      <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+      <div className="relative z-10">
+        <Navbar setSearchString={setSearchString} />
         <Main searchString={searchString} />
       </div>
     </div>

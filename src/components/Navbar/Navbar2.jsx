@@ -4,7 +4,7 @@ import logo from "../../assets/logo-white.png";
 import { Link, NavLink } from "react-router";
 import { FaSearch } from "react-icons/fa";
 
-const Navbar = ({ setSearchString }) => {
+const Navbar2 = () => {
   const [menuClicked, setMenuClicked] = useState(false);
 
   const handleNavMenuClicked = () => {
@@ -63,7 +63,7 @@ const Navbar = ({ setSearchString }) => {
           size={24}
         />
         <div
-          className={`absolute flex flex-col gap-2 mt-1 bg-black/95 p-2 rounded ${
+          className={`absolute flex flex-col gap-2 mt-1 bg-black/50 p-2 rounded ${
             menuClicked ? "block" : "hidden"
           }`}
         >
@@ -73,15 +73,7 @@ const Navbar = ({ setSearchString }) => {
       <Link to={"/"}>
         <img src={logo} alt="Logo" />
       </Link>
-      <div className="flex items-center bg-white/20 border border-white rounded px-4 py-2 w-full max-w-md text-white">
-        <FaSearch className="text-white mr-2" />
-        <input
-          type="text"
-          placeholder="Search your Destination..."
-          className="bg-transparent outline-none w-full placeholder-white"
-          onChange={(e) => setSearchString(e.target.value)}
-        />
-      </div>
+
       <div className="hidden xl:block">
         <div className="flex items-center gap-8">{links}</div>
       </div>
@@ -89,4 +81,4 @@ const Navbar = ({ setSearchString }) => {
   );
 };
 
-export default Navbar;
+export default Navbar2;

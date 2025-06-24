@@ -1,0 +1,9 @@
+input[type="date"].date-black::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+input[type="date"].date-black::-ms-input-placeholder {
+  color: #000;
+}
+input[type="date"].date-black::placeholder {
+  color: #000;
+}

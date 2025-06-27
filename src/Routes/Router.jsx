@@ -4,6 +4,7 @@ import Root from "../pages/Root";
 import Home from "../pages/Home";
 import Main from "../components/Main/Main";
 import Booking from "../pages/booking";
+import Place from "../pages/Place";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,13 @@ const router = createBrowserRouter([
           const res = await fetch(`/places.json`);
           const data = await res.json();
           return data.find((place) => place.id === params.id);
+        },
+      },
+      {
+        path: "place/:placeId",
+        Component: Place,
+        loader: () => {
+          return fetch("/hotels.json").then((res) => res.json());
         },
       },
     ],

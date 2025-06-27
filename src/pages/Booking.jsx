@@ -1,11 +1,17 @@
 import React from "react";
 import bgImg from "../assets/images/Rectangle_28.png";
 import Navbar2 from "../components/Navbar/Navbar2";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import "../assets/style.css";
 
 const Booking = () => {
   const place = useLoaderData();
+  const navigate = useNavigate();
+
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    navigate(`/place/${place.id}`, { state: { place } });
+  };
 
   return (
     <div
@@ -36,6 +42,7 @@ const Booking = () => {
                 name="origin"
                 placeholder="Dhaka"
                 className="bg-[#F2F2F2] rounded-md p-5 block w-full mt-2 font-bold text-black placeholder-black mb-4"
+                required
               />
               <label
                 htmlFor="destination"
@@ -49,6 +56,7 @@ const Booking = () => {
                 name="destination"
                 value={place?.name}
                 className="bg-[#F2F2F2] rounded-md p-5 block w-full mt-2 font-bold text-black placeholder-black mb-4"
+                required
               />
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -60,6 +68,7 @@ const Booking = () => {
                     id="from"
                     name="from"
                     className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4"
+                    required
                   />
                 </div>
                 <div>
@@ -71,10 +80,14 @@ const Booking = () => {
                     id="to"
                     name="to"
                     className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4"
+                    required
                   />
                 </div>
               </div>
-              <button className="btn bg-[#F9A51A] border-[#F9A51A] block w-full mt-4 hover:bg-white hover:text-black">
+              <button
+                onClick={handleFormSubmission}
+                className="btn bg-[#F9A51A] border-[#F9A51A] block w-full mt-4 hover:bg-white hover:text-black"
+              >
                 Start Booking
               </button>
             </form>

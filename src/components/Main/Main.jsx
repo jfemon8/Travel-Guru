@@ -62,7 +62,7 @@ const Main = ({ searchString }) => {
             <div
               onClick={() => handleCardClick(index)}
               key={index}
-              className={`carousel-item relative ${
+              className={`carousel-item cursor-pointer relative ${
                 placeIndex === index
                   ? "border-3 rounded-box border-[#FBBC04]"
                   : ""

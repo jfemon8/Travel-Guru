@@ -1,0 +1,62 @@
+import React from "react";
+import { Link } from "react-router";
+
+const Login = () => {
+  return (
+    <div className="border-2 border-[#ABABAB] rounded p-10">
+      <h1 className="text-2xl font-bold">Login</h1>
+      <form action="">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+        />
+        <div className="flex items-center justify-between my-4">
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              name="remember"
+              id="remember"
+              defaultChecked
+              className="checkbox checkbox-info"
+            />
+            <label htmlFor="remember" className="ml-2">
+              Remember me
+            </label>
+          </div>
+          <a
+            href="#"
+            className="text-[#F9A51A] hover:text-[#3076FF] hover:underline"
+          >
+            Forgot Password?
+          </a>
+        </div>
+        <button
+          type="submit"
+          className="btn w-full mt-4 bg-[#F9A51A] border-[#F9A51A] text-black hover:bg-white"
+        >
+          Login
+        </button>
+
+        <p className="text-center mt-4">
+          Don't have an account?{" "}
+          <Link
+            to="/auth/register"
+            className="text-[#F9A51A] hover:text-[#3076FF] hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
+      </form>
+    </div>
+  );
+};
+
+export default Login;

@@ -10,8 +10,6 @@ const Place = () => {
     (hotel) => hotel.placeId === state?.place.id
   );
 
-  console.log(filteredHotels);
-
   return (
     <div className="bg-white text-black">
       <Navbar3 />

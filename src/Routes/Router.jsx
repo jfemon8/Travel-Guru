@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Main from "../components/Main/Main";
 import Booking from "../pages/booking";
 import Place from "../pages/Place";
+import Auth from "../Layout/Auth";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         },
       },
     ],
+  },
+  {
+    path: "/auth",
+    Component: Auth,
   },
 ]);
 

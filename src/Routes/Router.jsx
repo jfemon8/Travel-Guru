@@ -7,6 +7,7 @@ import Booking from "../pages/booking";
 import Place from "../pages/Place";
 import Auth from "../Layout/Auth";
 import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/auth/login",
         Component: Login,
+      },
+      {
+        path: "/auth/register",
+        Component: Register,
       },
     ],
   },

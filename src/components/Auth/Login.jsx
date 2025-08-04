@@ -10,13 +10,16 @@ const Login = () => {
           type="email"
           name="email"
           placeholder="Enter your email"
-          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2 validator"
+          required
         />
+        <div className="validator-hint">Enter valid email address</div>
         <input
           type="password"
           name="password"
           placeholder="Enter your password"
           className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+          required
         />
         <div className="flex items-center justify-between my-4">
           <div className="flex items-center">

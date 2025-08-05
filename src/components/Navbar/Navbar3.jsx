@@ -3,6 +3,7 @@ import { ImMenu } from "react-icons/im";
 import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar3 = () => {
   const [menuClicked, setMenuClicked] = useState(false);
@@ -12,6 +13,29 @@ const Navbar3 = () => {
   };
 
   const { user, logOut } = use(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User logged out successfully",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      });
+  };
 
   const links = (
     <>
@@ -49,7 +73,7 @@ const Navbar3 = () => {
       </NavLink>
       {user ? (
         <button
-          onClick={logOut}
+          onClick={handleLogOut}
           className="btn bg-[#F9A51A] text-white border border-[#F9A51A] hover:bg-white hover:text-[#F9A51A]"
         >
           Log out

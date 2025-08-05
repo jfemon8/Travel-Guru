@@ -21,8 +21,8 @@ const Login = () => {
           position: "center",
           icon: "success",
           title: "Login successful",
-          showConfirmButton: false,
-          timer: 1000,
+          showConfirmButton: true,
+          timer: 1500,
         });
         navigate("/");
       })
@@ -32,8 +32,8 @@ const Login = () => {
           position: "center",
           icon: "error",
           title: errorMessage,
-          showConfirmButton: false,
-          timer: 1000,
+          showConfirmButton: true,
+          timer: 1500,
         });
       });
   };

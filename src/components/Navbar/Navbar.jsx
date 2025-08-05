@@ -4,6 +4,7 @@ import logo from "../../assets/logo-white.png";
 import { Link, NavLink } from "react-router";
 import { FaSearch } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = ({ setSearchString }) => {
   const [menuClicked, setMenuClicked] = useState(false);
@@ -13,6 +14,29 @@ const Navbar = ({ setSearchString }) => {
   };
 
   const { user, logOut } = use(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User logged out successfully",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      });
+  };
 
   const links = (
     <>
@@ -50,7 +74,7 @@ const Navbar = ({ setSearchString }) => {
       </NavLink>
       {user ? (
         <button
-          onClick={logOut}
+          onClick={handleLogOut}
           className="btn bg-[#F9A51A] text-white border border-[#F9A51A] hover:bg-white hover:text-[#F9A51A]"
         >
           Log out

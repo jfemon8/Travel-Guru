@@ -54,8 +54,8 @@ const Register = () => {
           position: "center",
           icon: "success",
           title: "User created successfully",
-          showConfirmButton: false,
-          timer: 1000,
+          showConfirmButton: true,
+          timer: 1500,
         });
         navigate("/");
       })
@@ -65,8 +65,8 @@ const Register = () => {
           position: "center",
           icon: "error",
           title: errorMessage,
-          showConfirmButton: false,
-          timer: 1000,
+          showConfirmButton: true,
+          timer: 1500,
         });
       });
   };

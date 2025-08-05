@@ -6,6 +6,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext();
 

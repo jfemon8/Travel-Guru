@@ -32,7 +32,7 @@ const Booking = () => {
           </div>
 
           <div className="bg-white rounded-md p-6 text-black">
-            <form action="">
+            <form onSubmit={handleFormSubmission}>
               <label htmlFor="origin" className="text-[#818181] font-medium">
                 Origin
               </label>
@@ -41,9 +41,10 @@ const Booking = () => {
                 id="origin"
                 name="origin"
                 placeholder="Dhaka"
-                className="bg-[#F2F2F2] rounded-md p-5 block w-full mt-2 font-bold text-black placeholder-black mb-4"
+                className="bg-[#F2F2F2] rounded-md p-5 block w-full mt-2 font-bold text-black placeholder-black mb-4 validator"
                 required
               />
+              <div className="validator-hint">Please enter your origin</div>
               <label
                 htmlFor="destination"
                 className="text-[#818181] font-medium"
@@ -67,9 +68,12 @@ const Booking = () => {
                     type="date"
                     id="from"
                     name="from"
-                    className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4"
+                    className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4 validator"
                     required
                   />
+                  <div className="validator-hint">
+                    Please enter the start date
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="to" className="text-[#818181] font-medium">
@@ -79,13 +83,16 @@ const Booking = () => {
                     type="date"
                     id="to"
                     name="to"
-                    className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4"
+                    className="date-black bg-[#F2F2F2] rounded-md p-5 block w-full font-bold text-black placeholder-black mt-2 mb-4 validator"
                     required
                   />
+                  <div className="validator-hint">
+                    Please enter the end date
+                  </div>
                 </div>
               </div>
               <button
-                onClick={handleFormSubmission}
+                type="submit"
                 className="btn bg-[#F9A51A] border-[#F9A51A] block w-full mt-4 hover:bg-white hover:text-black"
               >
                 Start Booking

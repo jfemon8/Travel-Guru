@@ -1,11 +1,22 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const { logIn } = use(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    logIn(email, password);
+  };
+
   return (
     <div className="border-2 border-[#ABABAB] rounded p-10">
       <h1 className="text-2xl font-bold">Login</h1>
-      <form action="">
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           name="email"

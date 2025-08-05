@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { ImMenu } from "react-icons/im";
 import logo from "../../assets/logo-white.png";
 import { Link, NavLink } from "react-router";
 import { FaSearch } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar2 = () => {
   const [menuClicked, setMenuClicked] = useState(false);
@@ -10,6 +11,8 @@ const Navbar2 = () => {
   const handleNavMenuClicked = () => {
     setMenuClicked(!menuClicked);
   };
+
+  const { user, logOut } = use(AuthContext);
 
   const links = (
     <>
@@ -45,12 +48,21 @@ const Navbar2 = () => {
       >
         Contact
       </NavLink>
-      <Link
-        to={"/auth/login"}
-        className="btn bg-[#F9A51A] text-white border border-[#F9A51A] hover:bg-white hover:text-[#F9A51A]"
-      >
-        Login
-      </Link>
+      {user ? (
+        <button
+          onClick={logOut}
+          className="btn bg-[#F9A51A] text-white border border-[#F9A51A] hover:bg-white hover:text-[#F9A51A]"
+        >
+          Log out
+        </button>
+      ) : (
+        <Link
+          to={"/auth/login"}
+          className="btn bg-[#F9A51A] text-white border border-[#F9A51A] hover:bg-white hover:text-[#F9A51A]"
+        >
+          Login
+        </Link>
+      )}
     </>
   );
 

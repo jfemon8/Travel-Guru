@@ -1,11 +1,60 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { user, setUser, createUser, updateUser } = use(AuthContext);
+  const [matchPassword, setMatchPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "password") {
+      setPassword(value);
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
+    }
+  };
+
+  useEffect(() => {
+    if (password !== confirmPassword) {
+      setMatchPassword(true);
+    } else {
+      setMatchPassword(false);
+    }
+  }, [password, confirmPassword]);
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    const form = e.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const email = form.email.value;
+
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        updateUser(user, firstName + " " + lastName);
+        console.log("User created and profile updated successfully");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.error(errorMessage);
+      });
+  };
+
+  console.log(user);
+
   return (
     <div className="border-2 border-[#ABABAB] rounded p-10">
       <h1 className="text-2xl font-bold">Create an account</h1>
-      <form action="">
+      <form onSubmit={handleRegistration}>
         <input
           type="text"
           name="firstName"
@@ -36,6 +85,7 @@ const Register = () => {
           placeholder="Enter your password"
           className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
           required
+          onKeyUp={handlePasswordChange}
         />
         <input
           type="password"
@@ -43,7 +93,11 @@ const Register = () => {
           placeholder="Confirm your password"
           className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
           required
+          onKeyUp={handlePasswordChange}
         />
+        <div className="text-red-500">
+          {matchPassword ? "Passwords do not match" : ""}
+        </div>
 
         <button
           type="submit"

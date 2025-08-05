@@ -1,16 +1,41 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { logIn } = use(AuthContext);
+  const { setUser, logIn } = use(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    logIn(email, password);
+    logIn(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
   };
 
   return (

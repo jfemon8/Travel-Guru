@@ -1,12 +1,15 @@
 import React, { use, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { user, setUser, createUser, updateUser } = use(AuthContext);
+  const { setUser, createUser, updateUser } = use(AuthContext);
   const [matchPassword, setMatchPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +31,13 @@ const Register = () => {
   const handleRegistration = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Passwords do not match",
+        showConfirmButton: false,
+        timer: 1000,
+      });
       return;
     }
     const form = e.target;
@@ -41,15 +50,26 @@ const Register = () => {
         const user = userCredential.user;
         setUser(user);
         updateUser(user, firstName + " " + lastName);
-        console.log("User created and profile updated successfully");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User created successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.error(errorMessage);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: false,
+          timer: 1000,
+        });
       });
   };
-
-  console.log(user);
 
   return (
     <div className="border-2 border-[#ABABAB] rounded p-10">

@@ -1,11 +1,11 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { setUser, logIn } = use(AuthContext);
-
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -24,7 +24,7 @@ const Login = () => {
           showConfirmButton: true,
           timer: 1500,
         });
-        navigate("/");
+        navigate(`${location.state || "/"}`);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -54,9 +54,16 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Enter your password"
-          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2 validator"
           required
+          minlength="6"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
         />
+        <p className="validator-hint">
+          Must be more than 6 characters, including at least one number, one
+          lowercase letter and one uppercase letter
+        </p>
         <div className="flex items-center justify-between my-4">
           <div className="flex items-center">
             <input

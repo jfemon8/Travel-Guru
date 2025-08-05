@@ -6,7 +6,6 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import Swal from "sweetalert2";
 
 export const AuthContext = createContext();
 
@@ -14,6 +13,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const logIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
@@ -34,6 +34,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
@@ -45,6 +46,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     logOut,
     updateUser,
+    loading,
   };
 
   return (

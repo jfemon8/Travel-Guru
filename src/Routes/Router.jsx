@@ -8,6 +8,8 @@ import Place from "../pages/Place";
 import Auth from "../Layout/Auth";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
+import PrivateRoute from "../provider/PrivateRoute";
+import AuthRoute from "../provider/AuthRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,12 @@ const router = createBrowserRouter([
       },
       {
         path: "booking/:id",
-        Component: Booking,
+        element: (
+          <PrivateRoute>
+            <Booking />
+          </PrivateRoute>
+        ),
+        // Component: Booking,
         loader: async ({ params }) => {
           const res = await fetch(`/places.json`);
           const data = await res.json();
@@ -29,7 +36,12 @@ const router = createBrowserRouter([
       },
       {
         path: "place/:placeId",
-        Component: Place,
+        element: (
+          <PrivateRoute>
+            <Place />
+          </PrivateRoute>
+        ),
+        // Component: Place,
         loader: () => {
           return fetch("/hotels.json").then((res) => res.json());
         },
@@ -38,7 +50,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth",
-    Component: Auth,
+    element: (
+      <AuthRoute>
+        <Auth />
+      </AuthRoute>
+    ),
+    // Component: Auth,
     children: [
       {
         path: "/auth/login",

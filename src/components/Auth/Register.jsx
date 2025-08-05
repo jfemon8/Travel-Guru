@@ -103,10 +103,17 @@ const Register = () => {
           type="password"
           name="password"
           placeholder="Enter your password"
-          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2"
+          className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2 validator"
           required
           onKeyUp={handlePasswordChange}
+          minlength="6"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
         />
+        <p className="validator-hint">
+          Must be more than 6 characters, including at least one number, one
+          lowercase letter and one uppercase letter
+        </p>
         <input
           type="password"
           name="confirmPassword"
@@ -115,9 +122,9 @@ const Register = () => {
           required
           onKeyUp={handlePasswordChange}
         />
-        <div className="text-red-500">
+        <small className="text-red-400 text-xs">
           {matchPassword ? "Passwords do not match" : ""}
-        </div>
+        </small>
 
         <button
           type="submit"

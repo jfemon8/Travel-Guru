@@ -10,6 +10,7 @@ import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import PrivateRoute from "../provider/PrivateRoute";
 import AuthRoute from "../provider/AuthRoute";
+import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <NotFound />,
   },
 ]);
 

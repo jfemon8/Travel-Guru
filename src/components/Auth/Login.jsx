@@ -57,13 +57,8 @@ const Login = () => {
           className="border-b border-b-[#ABABAB] outline-none focus:border-b-[#3076FF] transition duration-300 w-full my-4 py-2 validator"
           required
           minlength="6"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-          title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
         />
-        <p className="validator-hint">
-          Must be more than 6 characters, including at least one number, one
-          lowercase letter and one uppercase letter
-        </p>
+        <p className="validator-hint">Must be more than 6 characters</p>
         <div className="flex items-center justify-between my-4">
           <div className="flex items-center">
             <input

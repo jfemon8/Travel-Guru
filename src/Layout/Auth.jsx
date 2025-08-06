@@ -16,13 +16,13 @@ const Auth = () => {
           <hr className="w-2/5 border border-[#AAAAAA]" />
         </div>
         <div className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]">
-          <FaFacebook size={37} color="#3076FF" />
-          <p className="font-medium">Continue with Facebook</p>
+          <FaGoogle size={37} color="#34A853" />
+          <p className="font-medium">Continue with Google</p>
           <div></div>
         </div>
         <div className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]">
-          <FaGoogle size={37} color="#34A853" />
-          <p className="font-medium">Continue with Google</p>
+          <FaFacebook size={37} color="#3076FF" />
+          <p className="font-medium">Continue with Facebook</p>
           <div></div>
         </div>
       </div>

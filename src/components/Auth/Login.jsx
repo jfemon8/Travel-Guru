@@ -74,12 +74,12 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <a
-            href="#"
+          <Link
+            to="/auth/reset-password"
             className="text-[#F9A51A] hover:text-[#3076FF] hover:underline"
           >
             Forgot Password?
-          </a>
+          </Link>
         </div>
         <button
           type="submit"

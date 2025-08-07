@@ -8,15 +8,24 @@ import {
   browserSessionPersistence,
   browserLocalPersistence,
   setPersistence,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const logInWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
   const logIn = (email, password, remember) => {
     const persistenceType = remember
@@ -29,15 +38,23 @@ const AuthProvider = ({ children }) => {
   };
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const updateUser = (User = user, displayName = null, photoURL = null) => {
+    setLoading(true);
     return updateProfile(User, { displayName, photoURL });
   };
 
   const logOut = () => {
+    setLoading(true);
     return auth.signOut();
+  };
+
+  const resetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
   };
 
   useEffect(() => {
@@ -55,6 +72,8 @@ const AuthProvider = ({ children }) => {
     createUser,
     logOut,
     updateUser,
+    resetPassword,
+    logInWithGoogle,
     loading,
   };
 

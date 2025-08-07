@@ -11,6 +11,7 @@ import Register from "../components/Auth/Register";
 import PrivateRoute from "../provider/PrivateRoute";
 import AuthRoute from "../provider/AuthRoute";
 import NotFound from "../pages/NotFound";
+import ResetPassword from "../components/Auth/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -59,12 +60,16 @@ const router = createBrowserRouter([
     // Component: Auth,
     children: [
       {
-        path: "/auth/login",
+        path: "login",
         Component: Login,
       },
       {
-        path: "/auth/register",
+        path: "register",
         Component: Register,
+      },
+      {
+        path: "reset-password",
+        Component: ResetPassword,
       },
     ],
   },

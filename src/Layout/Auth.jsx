@@ -6,11 +6,37 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Auth = () => {
-  const { logInWithGoogle, setUser } = use(AuthContext);
+  const { logInWithGoogle, setUser, logInWithFacebook } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleGoogleLogIn = () => {
     logInWithGoogle()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+        navigate(`${location.state || "/"}`);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: true,
+          timer: 1500,
+        });
+      });
+  };
+
+  const handleFacebookLogIn = () => {
+    logInWithFacebook()
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
@@ -54,7 +80,10 @@ const Auth = () => {
           <p className="font-medium">Continue with Google</p>
           <div></div>
         </div>
-        <div className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]">
+        <div
+          className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]"
+          onClick={handleFacebookLogIn}
+        >
           <FaFacebook size={37} color="#3076FF" />
           <p className="font-medium">Continue with Facebook</p>
           <div></div>

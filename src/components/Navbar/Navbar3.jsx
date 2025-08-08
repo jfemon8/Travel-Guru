@@ -90,7 +90,7 @@ const Navbar3 = () => {
   );
 
   return (
-    <div className="p-4 xl:px-32 xl:py-8 flex justify-between items-center gap-2">
+    <div className="p-4 xl:px-32 flex justify-between items-center gap-2 sticky top-0 z-50 bg-white shadow-md">
       <div className="relative xl:hidden">
         <ImMenu
           onClick={handleNavMenuClicked}

@@ -14,6 +14,7 @@ import NotFound from "../pages/NotFound";
 import ResetPassword from "../components/Auth/ResetPassword";
 import CommonLayout from "../Layout/CommonLayout";
 import News from "../pages/News";
+import SingleNews from "../pages/SingleNews";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,19 @@ const router = createBrowserRouter([
       {
         path: "news",
         Component: News,
+      },
+      {
+        path: "news/:id",
+        element: (
+          <PrivateRoute>
+            <SingleNews />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          const res = await fetch("/news.json");
+          const data = await res.json();
+          return data.find((news) => news.id === parseInt(params.id));
+        },
       },
     ],
   },

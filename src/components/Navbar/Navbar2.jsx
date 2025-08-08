@@ -41,7 +41,7 @@ const Navbar2 = () => {
   const links = (
     <>
       <NavLink
-        to={"/news"}
+        to={"/home/news"}
         className={({ isActive }) =>
           isActive ? "font-extrabold" : "font-medium hover:font-extrabold"
         }
@@ -49,7 +49,7 @@ const Navbar2 = () => {
         News
       </NavLink>
       <NavLink
-        to={"/destination"}
+        to={"/home/destination"}
         className={({ isActive }) =>
           isActive ? "font-extrabold" : "font-medium hover:font-extrabold"
         }
@@ -57,7 +57,7 @@ const Navbar2 = () => {
         Destination
       </NavLink>
       <NavLink
-        to={"/blog"}
+        to={"/home/blog"}
         className={({ isActive }) =>
           isActive ? "font-extrabold" : "font-medium hover:font-extrabold"
         }
@@ -65,7 +65,7 @@ const Navbar2 = () => {
         Blog
       </NavLink>
       <NavLink
-        to={"/contact"}
+        to={"/home/contact"}
         className={({ isActive }) =>
           isActive ? "font-extrabold" : "font-medium hover:font-extrabold"
         }

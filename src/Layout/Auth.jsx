@@ -4,6 +4,8 @@ import { Outlet, useNavigate } from "react-router";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import fb from "../assets/fb.webp";
+import google from "../assets/google.webp";
 
 const Auth = () => {
   const { logInWithGoogle, setUser, logInWithFacebook } = use(AuthContext);
@@ -76,7 +78,8 @@ const Auth = () => {
           className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]"
           onClick={handleGoogleLogIn}
         >
-          <FaGoogle size={37} color="#34A853" />
+          {/* <FaGoogle size={37} color="#34A853" /> */}
+          <img src={google} alt="Google" className="h-9 w-9 rounded-full" />
           <p className="font-medium">Continue with Google</p>
           <div></div>
         </div>
@@ -84,7 +87,8 @@ const Auth = () => {
           className="flex items-center justify-between p-2 border border-[#C7C7C7] rounded-full w-5/6 mx-auto my-2 cursor-pointer hover:bg-[#C7C7C7]"
           onClick={handleFacebookLogIn}
         >
-          <FaFacebook size={37} color="#3076FF" />
+          {/* <FaFacebook size={37} color="#3076FF" /> */}
+          <img src={fb} alt="FB" className="h-9 w-9 rounded-full" />
           <p className="font-medium">Continue with Facebook</p>
           <div></div>
         </div>

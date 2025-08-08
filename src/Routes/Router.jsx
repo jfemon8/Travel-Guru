@@ -12,6 +12,8 @@ import PrivateRoute from "../provider/PrivateRoute";
 import AuthRoute from "../provider/AuthRoute";
 import NotFound from "../pages/NotFound";
 import ResetPassword from "../components/Auth/ResetPassword";
+import CommonLayout from "../Layout/CommonLayout";
+import News from "../pages/News";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +72,16 @@ const router = createBrowserRouter([
       {
         path: "reset-password",
         Component: ResetPassword,
+      },
+    ],
+  },
+  {
+    path: "/home",
+    Component: CommonLayout,
+    children: [
+      {
+        path: "news",
+        Component: News,
       },
     ],
   },

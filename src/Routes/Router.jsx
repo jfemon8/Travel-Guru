@@ -15,6 +15,8 @@ import ResetPassword from "../components/Auth/ResetPassword";
 import CommonLayout from "../Layout/CommonLayout";
 import News from "../pages/News";
 import SingleNews from "../pages/SingleNews";
+import Destination from "../pages/Destination";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +98,26 @@ const router = createBrowserRouter([
           const data = await res.json();
           return data.find((news) => news.id === parseInt(params.id));
         },
+      },
+      {
+        path: "destination/",
+        Component: Destination,
+        loader: async () => {
+          const res = await fetch("/places.json");
+          return res.json();
+        },
+      },
+      {
+        path: "blog",
+        Component: React.lazy(() => import("../pages/blogs")),
+        loader: async () => {
+          const res = await fetch("/blogs.json");
+          return res.json();
+        },
+      },
+      {
+        path: "contact",
+        Component: Contact,
       },
     ],
   },
